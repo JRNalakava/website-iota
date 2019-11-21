@@ -1,0 +1,4 @@
+/venv
+manage.py
+/iota_web/settings.py
+.env

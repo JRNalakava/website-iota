@@ -1,0 +1,61 @@
+{% extends 'open/index.html' %}
+
+{% block title %}
+    Iota WebApp
+{% endblock %}
+{% block overlay_layout %}
+        <div class="container">
+        <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-md-12 mb-4 white-text text-center">
+                <h1 class="h1-responsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown" data-wow-delay="0.3s"><strong>Alpha Kappa Psi</strong></h1>
+                <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
+                <input id="inp_rush" class="btn btn-outline-dark text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s" type="button" value="Learn more about Rush" onclick="location.href='{% url 'rush' %}'"/>
+              </div>
+              <!--Grid column-->
+            </div>
+            <div class="row my-lg-5">
+                <div class="card-deck" style="display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: .5rem;">
+                    <div class="card">
+                        <img class="card-img-top" src="https://akpsi-iota-bucket.s3.us-east-2.amazonaws.com/images/open/icm-background.jpg" alt="Investment Chart">
+                        <div class="card-body">
+                            <h5 class="card-title">Iota Capital Management</h5>
+                         </div>
+                        <div class="card-footer">
+                            <p class="card-text">Learn more about our private investment fund</p>
+                            <input id="inp_icm" class="btn btn-outline-dark" type="button" value="Visit" onclick="location.href='{% url 'icm' %}'"/>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <img class="card-img-top" src="https://akpsi-iota-bucket.s3.us-east-2.amazonaws.com/images/open/Graduation.jpg" alt="Graduation Picture">
+                        <div class="card-body">
+                            <h5 class="card-title">Alumni</h5>
+                            <!-- Button trigger modal -->
+                        </div>
+                         <div class="card-footer">
+                            <p class="card-text">Register into our alumni chapter</p>
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter">
+                            Register
+                            </button>
+                            {% include 'open/snippet/register_popup.html' %}
+                         </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="https://akpsi-iota-bucket.s3.us-east-2.amazonaws.com/images/open/handshake.jpg" alt="Handshake">
+                        <div class="card-body">
+                            <h5 class="card-title">Sponsorships & Donations</h5>
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text">Learn more about how your business can get closer to our chapter</p>
+                            <div class="row">
+                                <input id="inp_contact" class="btn btn-outline-dark" type="button" value="Contact Us" onclick="location.href='{% url 'sponsorship' %}'"/>
+                                <input id="inp_donation" class="btn btn-outline-dark" type="button" value="Donations" onclick="location.href='{% url 'donation' %}'"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--Grid row-->
+{% endblock %}

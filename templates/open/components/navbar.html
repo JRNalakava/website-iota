@@ -1,0 +1,10 @@
+{% load static %}
+<nav class="navbar" style="background-color: #2A67A4">
+    <a class="navbar-brand" href="{% url 'home' %}" style="background-color: transparent">
+    <img src="{% static 'open/logo.png' %}" width="36" height="30" class="d-inline-block align-top" alt="logo">
+    <span style="color: black;">Home</span>
+    </a>
+    <a class="nav-item" href="{% url 'login' %}">
+        <button class="btn btn-outline-warning my-2 my-sm-0" type='button'>Login</button>
+    </a>
+</nav>

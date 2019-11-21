@@ -1,0 +1,27 @@
+{% extends 'open/index.html' %}
+{% block title %}
+    Iota Capital Management
+{% endblock %}
+{% block overlay_layout %}
+    <div class="container">
+        <div class="row my-lg-5 align-items-center">
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="https://akpsi-iota-bucket.s3.us-east-2.amazonaws.com/images/open/stonks.png">
+                    <div class="card-body">
+                        <h5 class="card-title">Balance</h5>
+                        <var class="card-text">$<strong>{{ cash_balance }}</strong></var>
+                    </div>
+                </div>
+                 <div class="card">
+                    <img class="card-img-top" src="https://akpsi-iota-bucket.s3.us-east-2.amazonaws.com/images/open/long.jpg" alt="Graduation Picture">
+                    <div class="card-body">
+                        <h5 class="card-title">Long Stock Value</h5>
+                        <var class="card-text">$<strong>{{ long_stock_val }}</strong></var>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ content }}
+    </div>
+{% endblock %}
