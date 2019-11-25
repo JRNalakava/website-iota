@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . import models
+from . import models, forms
 import tdameritrade.auth as ameritrade
 import environ
 from tdameritrade import TDClient
@@ -63,7 +63,15 @@ def icm(request):
 
 
 def register(request, reg_type):
-    if reg_type == 'pledge':
+    form = ''
+
+
+    if reg_type == 'user':
+        form = forms.UserForm()
+        context = {'form': form,
+                   }
+        return render(request, 'open/register/user_register.html', context)
+    elif reg_type == 'pledge':
         return render(request, 'open/register/pledge_register.html')
     elif reg_type == 'active':
         return render(request, 'open/register/active_register.html')

@@ -13,7 +13,7 @@ class User(AbstractUser):
 
     pledge_class = models.TextField(null=False, default='PC', max_length=5)
 
-    user_city = USStateField()
+    user_state = USStateField(default='TX')
     user_city = models.TextField(null=True, max_length=50)
     major = models.TextField(null=False, max_length=50, default='Unspecified')
     avatar = models.ImageField(upload_to='images', null=True)
