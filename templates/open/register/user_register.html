@@ -1,7 +1,186 @@
-{% extends 'open/register/register_base.html' %}
-{% block content %}
-    {% csrf_token %}
-    <form method="post">
-    
-    </form>
+{% extends 'chapter/authentication/register_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block register_block %}
+    <div class="container">
+        <form method="post">
+        <div class="card">
+            <div class="card-header text-center">
+                <p>User Registration</p>
+                {{ form.non_field_errors }}
+            </div>
+            <div class="card-body">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+                            <input name="first_name" type="text" class="form-control" id="{{ form.first_name.id_for_label }}" aria-describedby="firstNameHelp" placeholder="Enter first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                            <input name="last_name" type="text" class="form-control" id="{{ form.last_name.id_for_label }}" aria-describedby="lastNameHelp" placeholder="Enter last name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.email.id_for_label }}">Email address</label>
+                            <input name="email" type="email" class="form-control" id="{{ form.email.id_for_label }}" aria-describedby="emailHelp" placeholder="Enter email" required>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone outside the chapter.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="{{ form.user_state.id_for_label }}">State:</label>
+                            <div id="div_id_user_state" class="control-group">
+                                <div class="controls">
+                                    <select name="user_state" class="form-control" id="{{ form.user_state.id_for_label }}">
+                                        <option value="AL">Alabama</option>
+
+                                        <option value="AK">Alaska</option>
+
+                                        <option value="AS">American Samoa</option>
+
+                                        <option value="AZ">Arizona</option>
+
+                                        <option value="AR">Arkansas</option>
+
+                                        <option value="AA">Armed Forces Americas</option>
+
+                                        <option value="AE">Armed Forces Europe</option>
+
+                                        <option value="AP">Armed Forces Pacific</option>
+
+                                        <option value="CA">California</option>
+
+                                        <option value="CO">Colorado</option>
+
+                                        <option value="CT">Connecticut</option>
+
+                                        <option value="DE">Delaware</option>
+
+                                        <option value="DC">District of Columbia</option>
+
+                                        <option value="FL">Florida</option>
+
+                                        <option value="GA">Georgia</option>
+
+                                        <option value="GU">Guam</option>
+
+                                        <option value="HI">Hawaii</option>
+
+                                        <option value="ID">Idaho</option>
+
+                                        <option value="IL">Illinois</option>
+
+                                        <option value="IN">Indiana</option>
+
+                                        <option value="IA">Iowa</option>
+
+                                        <option value="KS">Kansas</option>
+
+                                        <option value="KY">Kentucky</option>
+
+                                        <option value="LA">Louisiana</option>
+
+                                        <option value="ME">Maine</option>
+
+                                        <option value="MD">Maryland</option>
+
+                                        <option value="MA">Massachusetts</option>
+
+                                        <option value="MI">Michigan</option>
+
+                                        <option value="MN">Minnesota</option>
+
+                                        <option value="MS">Mississippi</option>
+
+                                        <option value="MO">Missouri</option>
+
+                                        <option value="MT">Montana</option>
+
+                                        <option value="NE">Nebraska</option>
+
+                                        <option value="NV">Nevada</option>
+
+                                        <option value="NH">New Hampshire</option>
+
+                                        <option value="NJ">New Jersey</option>
+
+                                        <option value="NM">New Mexico</option>
+
+                                        <option value="NY">New York</option>
+
+                                        <option value="NC">North Carolina</option>
+
+                                        <option value="ND">North Dakota</option>
+
+                                        <option value="MP">Northern Mariana Islands</option>
+
+                                        <option value="OH">Ohio</option>
+
+                                        <option value="OK">Oklahoma</option>
+
+                                        <option value="OR">Oregon</option>
+
+                                        <option value="PA">Pennsylvania</option>
+
+                                        <option value="PR">Puerto Rico</option>
+
+                                        <option value="RI">Rhode Island</option>
+
+                                        <option value="SC">South Carolina</option>
+
+                                        <option value="SD">South Dakota</option>
+
+                                        <option value="TN">Tennessee</option>
+
+                                        <option value="TX" selected="">Texas</option>
+
+                                        <option value="UT">Utah</option>
+
+                                        <option value="VT">Vermont</option>
+
+                                        <option value="VI">Virgin Islands</option>
+
+                                        <option value="VA">Virginia</option>
+
+                                        <option value="WA">Washington</option>
+
+                                        <option value="WV">West Virginia</option>
+
+                                        <option value="WI">Wisconsin</option>
+
+                                        <option value="WY">Wyoming</option>
+
+                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.user_city.id_for_label }}">City:</label>
+                            <input name="user_city" type="text" class="form-control" id="{{ form.user_city.id_for_label }}" aria-describedby="cityHelp" placeholder="Enter city">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="{{ form.pledge_class.id_for_label }}">Pledge Class:</label>
+                            <input type="text" class="form-control" name="pledge_class" id="{{ form.pledge_class.id_for_label }}" aria-describedby="pledgeClassHelp" placeholder="Enter pledge class" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.major.id_for_label }}">Major:</label>
+                            <input name="major" type="text" class="form-control" id="{{ form.major.id_for_label }}" aria-describedby="majorHelp" placeholder="Enter major" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer form-inline" style="display: inline-block;">
+                    <div>
+                        <input name="username" type="text" class="form-control w-responsive" id="{{ form.username.id_for_label }}" aria-describedby="usernameHelp" placeholder="Enter username" required>
+                        <input name="password" type="password" class="form-control w-responsive" id="{{ form.password.id_for_label }}" aria-describedby="passwordHelp" placeholder="Enter password" required>
+                        <span><input type="submit" class="btn btn-primary float-right" value="Register"></span>
+                    </div>
+            </div>
+        </div>
+        </form>
+    </div>
 {% endblock %}

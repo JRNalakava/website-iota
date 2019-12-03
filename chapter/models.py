@@ -1,38 +1,53 @@
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.contrib.auth.models import AbstractUser
-from . import script
 from localflavor.us.models import USStateField
 
 
 # Create your models here.
-class User(AbstractUser):
-    is_brother = models.BooleanField(default=True)
-    is_pledge = models.BooleanField(default=False)
-
+class ChapterUser(AbstractUser):
     pledge_class = models.TextField(null=False, default='PC', max_length=5)
 
     user_state = USStateField(default='TX')
     user_city = models.TextField(null=True, max_length=50)
     major = models.TextField(null=False, max_length=50, default='Unspecified')
     avatar = models.ImageField(upload_to='images', null=True)
+    has_been_authenticated = models.BooleanField(default=False, null=False)
+
+    def __str__(self):
+        """String for representing the MyModelName object (in Admin site etc.)."""
+        return ' '.join([self.first_name, self.last_name])
 
 
 class Member(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    paid_dues = models.BooleanField(default=False)
+    user = models.OneToOneField(to=ChapterUser, on_delete=models.CASCADE)
+    paid_dues = models.BooleanField(default=False, null=True)
     expected_graduation_date = models.TextField(null=False, default='May 2020')
+
+    def __str__(self):
+        """String for representing the MyModelName object (in Admin site etc.)."""
+        return ' '.join([self.user.first_name, self.user.last_name])
 
 
 class Active(models.Model):
-    member = models.ForeignKey(to=Member, on_delete=models.CASCADE)
+    member = models.OneToOneField(to=Member, on_delete=models.CASCADE)
     rush_credits = models.PositiveSmallIntegerField(default=0)
     philanthropy_credits = models.PositiveSmallIntegerField(default=0)
     professional_credits = models.PositiveSmallIntegerField(default=0)
     tech_credits = models.PositiveSmallIntegerField(default=0)
 
+    def __str__(self):
+        """String for representing the MyModelName object (in Admin site etc.)."""
+        return ' '.join([self.member.user.first_name, self.member.user.last_name])
+
 
 class Alumni(models.Model):
+    user = models.OneToOneField(to=ChapterUser, on_delete=models.CASCADE)
     industry = models.TextField(null=True, max_length=50)
     graduation_date = models.TextField(default='May 2018')
+
+    class Meta:
+        verbose_name_plural = "alumni"
+
+    def __str__(self):
+        """String for representing the MyModelName object (in Admin site etc.)."""
+        return ' '.join([self.user.first_name, self.user.last_name])

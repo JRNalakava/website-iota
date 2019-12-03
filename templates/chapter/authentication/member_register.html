@@ -1,0 +1,25 @@
+{% extends 'chapter/authentication/register_base.html' %}
+{% block register_block %}
+    {% load crispy_forms_tags %}
+    <div class="container">
+        <form method="post">
+        {% csrf_token %}
+            <div class="card">
+                <div class="card-header text-center">
+                    <p>User Registration</p>
+                    {{ form.non_field_errors }}
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                            {{ form.expected_graduation_date.errors }}
+                            <label for="{{ form.expected_graduation_date.id_for_label }}">Expected Graduation Month and Year:</label>
+                            <input name="expected_graduation_date" type="text" class="form-control" id="{{ form.expected_graduation_date.id_for_label }}" aria-describedby="graduationDateHelp" placeholder="May 2019">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" class="btn btn-primary" value="Request Authentication">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

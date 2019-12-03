@@ -1,9 +1,16 @@
+from random import random
+
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from . import models, forms
+from django.urls import reverse
+
+from . import models
+from chapter import forms
 import tdameritrade.auth as ameritrade
 import environ
 from tdameritrade import TDClient
-from pprint import pprint
 
 env = environ.Env()
 environ.Env.read_env()  # reading .env file
@@ -62,21 +69,24 @@ def icm(request):
     return render(request, 'open/pages/icm.html', context=context)
 
 
-def register(request, reg_type):
+def basic_register(request):
     form = ''
 
+    if request.method == 'POST':
+        form = forms.UserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.info(request, "Thanks for registering. You are now logged in.")
+            login(request=request, user=user)
 
-    if reg_type == 'user':
+            return HttpResponseRedirect(reverse('custom_registration', args=['home']))
+    else:
         form = forms.UserForm()
-        context = {'form': form,
-                   }
-        return render(request, 'open/register/user_register.html', context)
-    elif reg_type == 'pledge':
-        return render(request, 'open/register/pledge_register.html')
-    elif reg_type == 'active':
-        return render(request, 'open/register/active_register.html')
-    elif reg_type == 'alumni':
-        return render(request, 'open/register/alumni_register.html')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'open/register/user_register.html', context)
 
 
 def rush(request):
@@ -119,3 +129,4 @@ var = {'496041278':
                  }
             }
        }
+

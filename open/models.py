@@ -4,7 +4,7 @@ from chapter import models as chapter_models
 
 # Create your models here.
 class Post(models.Model):
-    post_creator = models.ForeignKey(to=chapter_models.User, on_delete=models.CASCADE)
+    post_creator = models.ForeignKey(to=chapter_models.ChapterUser, on_delete=models.CASCADE)
     post_identifier = models.TextField(max_length=20)
     post_content = models.TextField(max_length=1000)
 

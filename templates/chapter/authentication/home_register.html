@@ -1,0 +1,40 @@
+{% extends 'chapter/authentication/register_base.html' %}
+{% block register_block %}
+    {% load static %}
+    <div class="container">
+        <div class="card-deck">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'chapter/crest.jpg' %}" alt="Active Crest">
+                <div class="card-body">
+                    <h5 class="card-title">Actives</h5>
+                 </div>
+                <div class="card-footer">
+                    <input id="inp_icm" class="btn btn-outline-dark" type="button" value="Register" onclick="location.href='{% url 'custom_registration' reg_type='active' %}'"/>
+                </div>
+            </div>
+             <div class="card">
+                <img class="card-img-top" src="{% static 'chapter/alumni.jpg' %}" alt="Alumni Crest">
+                <div class="card-body">
+                    <h5 class="card-title">Alumni</h5>
+                    <!-- Button trigger modal -->
+                </div>
+                 <div class="card-footer">
+                    <a class="btn btn-outline-dark" href="{% url 'custom_registration' reg_type='alumni' %}">
+                    Register
+                    </a>
+                 </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'chapter/pledge.png' %}" alt="Pledge Crest">
+                <div class="card-body">
+                    <h5 class="card-title">Pledges</h5>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-outline-dark" href="{% url 'custom_registration' reg_type='pledge' %}">
+                    Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

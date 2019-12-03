@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('register/<reg_type>', views.register, name='custom_registration'),
+    path('register/basic', views.basic_register, name='basic_registration'),
     path('about/', TemplateView.as_view(template_name="open/pages/about.html"), name='about'),
     path('rush/', views.rush, name='rush'),
     path('icm/', views.icm, name='icm'),

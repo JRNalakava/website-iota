@@ -21,10 +21,13 @@
         {% endif %}
     </header>
 
-    {% block content %}
-    {% endblock %}
+    <div class="container h-100">
+        {% block content %}
+        {% endblock %}
+    </div>
 
-<footer class="footer mt-auto py-3" style="background-color: #3E453D">
+
+<footer class="footer" style="background-color: #3E453D">
     <div class="container-fluid" style="background-color: #3E453D; color: #FAF6CA;">
         {% if is_authenticated %}
             {% include 'chapter/components/footer.html' %}

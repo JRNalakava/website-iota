@@ -4,7 +4,7 @@ from django import forms
 from django.forms import ModelForm
 import environ
 
-from chapter.models import ChapterUser, Active, Alumni
+from .models import ChapterUser, Active, Alumni, Member
 env = environ.Env()
 environ.Env.read_env()  # reading .env file
 
@@ -16,14 +16,13 @@ class UserForm (forms.ModelForm):
                   'user_city', 'pledge_class', 'major', 'username', 'password']
 
 
-# Create the form class.
-class ActiveUserForm(ModelForm):
+class MemberForm(ModelForm):
     class Meta:
-        model = Active
-        fields = '__all__'
+        model = Member
+        exclude = ['user', 'paid_dues']
 
 
 class AlumniUserForm(ModelForm):
     class Meta:
         model = Alumni
-        fields = '__all__'
+        exclude = ['user']

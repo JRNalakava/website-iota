@@ -1,0 +1,28 @@
+{% extends 'chapter/authentication/register_base.html' %}
+{% block register_block %}
+    {% load crispy_forms_tags %}
+    <div class="container">
+        <form method="post">
+        {% csrf_token %}
+            <div class="card">
+                <div class="card-header text-center">
+                    <p>User Registration</p>
+                    {{ form.non_field_errors }}
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                            <label for="{{ form.industry.id_for_label }}">Current Industry:</label>
+                            <input name="industry" type="text" class="form-control" id="{{ form.industry.id_for_label }}" aria-describedby="industryHelp" placeholder="Enter industry">
+                    </div>
+                    <div class="form-group">
+                            <label for="{{ form.graduation_date.id_for_label }}">Graduation Month and Year:</label>
+                            <input name="graduation_date" type="text" class="form-control" id="{{ form.graduation_date.id_for_label }}" aria-describedby="graduationDateHelp" placeholder="May 2018">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" class="btn btn-primary" value="Request Authentication">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -68,30 +68,25 @@
                        clip: rect(0, 375.20001220703125px, 812px, 0);
                     }
         </style>
-</head>
+    </head>
     <body>
-        <header>
-          {% include 'open/components/navbar.html' %}
-          <!-- Full Page Intro -->
-          <div class="view" style="background-image: url('https://akpsi-iota-bucket.s3.us-east-2.amazonaws.com/images/open/campus.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-            <!-- Mask & flexbox options-->
-            <div class="mask rgba-black-light align-items-center overflow-auto">
-              <!-- Content -->
-              {% block overlay_layout %}
-                {% endblock %}
-              <!-- Content -->
-            </div>
-            <!-- Mask & flexbox options-->
-          </div>
-            <div class="row mw-100 mx-0" style="background-color: #3E453D">
-                <div class="container" style="background-color: #3E453D; color: #FAF6CA;">
-                    {% include 'open/components/footer.html' %}
+          {% include 'open/components/navbar.html' %}        <!-- Main navigation -->
+<!-- Full Page Intro -->
+            <div class="view" style="background-image: url('https://akpsi-iota-bucket.s3.us-east-2.amazonaws.com/images/open/campus.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+                <!-- Mask & flexbox options-->
+                <div class="mask rgba-black-light align-items-center overflow-auto">
+                  <!-- Content -->
+                  {% block overlay_layout %}
+                  {% endblock %}
+                  <!-- Content -->
                 </div>
+                <!-- Mask & flexbox options-->
             </div>
-          <!-- Full Page Intro -->
-        </header>
-        <!-- Main navigation -->
-        <!--Main Layout-->
+          <!-- Full Page Intro -->        <!--Main Layout-->
+    </body>
+
+    <footer>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
