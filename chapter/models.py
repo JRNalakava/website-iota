@@ -51,3 +51,31 @@ class Alumni(models.Model):
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
         return ' '.join([self.user.first_name, self.user.last_name])
+
+
+class Post(models.Model):
+    author = models.ForeignKey(to=ChapterUser, on_delete=models.CASCADE)
+    likes = models.IntegerField(default=0)
+    subject = models.TextField(max_length=80)
+    content = models.TextField(max_length=400)
+
+    def __str__(self):
+        return ''.join([self.author, ': ', self.subject])
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(to=ChapterUser, on_delete=models.CASCADE)
+    post = models.ForeignKey(to=Post, on_delete=models.CASCADE)
+    content = models.TextField(max_length=200)
+
+    def __str__(self):
+        return ''.join([self.author, ': ', self.content])
+
+
+class CommentResponse(models.Model):
+    author = models.ForeignKey(to=ChapterUser, on_delete=models.CASCADE)
+    comment = models.ForeignKey(to=Comment, on_delete=models.CASCADE)
+    content = models.TextField(max_length=200)
+
+    def __str__(self):
+        return ''.join([self.author, ': ', self.content])
